@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Are you in?</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-image: url("https://source.unsplash.com/woman-leaning-on-brown-metal-frame-at-daytime-kqD-L4FPxJg");
+        background-size: cover;
+        font-size: 32px;
+        font-family: Verdana, sans-serif;
+      }
+
+      form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        transition: opacity 5s; /* Fade out effect over 5 seconds */
+      }
+
+      input[type="password"] {
+        background-color: transparent;
+        color: whitesmoke;
+        font-size: 32px;
+        font-family: Verdana, sans-serif;
+        letter-spacing: 0.125em;
+        border-radius: 15px;
+        padding: 0px 10px 5px 13px;
+        border: 3px solid whitesmoke;
+        line-height: 2.15em;
+        width: 14ch; /* Limiting input width to 12 characters */
+      }
+
+      input[type="submit"] {
+        display: none; /* Hiding the 'Enter' button */
+      }
+
+      input[type="password"]:focus {
+        outline: none; /* Removing the focus outline */
+      }
+    </style>
+  </head>
+  <body>
+    <form id="passwordForm">
+      <input type="password" id="passwordInput" />
+    </form>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var attempts = 0;
+
+        document.getElementById("passwordInput").focus(); // Bringing focus to the input on page load
+
+        var placeholders = [
+          "nope...",
+          "uh uh",
+          "not even close.",
+          "try again",
+          "loser...",
+          "So close!",
+        ];
+
+        document
+          .getElementById("passwordForm")
+          .addEventListener("submit", function (event) {
+            event.preventDefault();
+            var password = document.getElementById("passwordInput").value;
+
+            if (password === "realhipster") {
+              window.location.href = "/imin.html"; // Redirecting to /imin.html if password matches
+            } else {
+              attempts++;
+              if (attempts >= 3) {
+                document.getElementById("passwordInput").value = ""; // Clearing the input field
+                document.getElementById("passwordInput").placeholder =
+                  "bye bye :-)";
+                document.getElementById("passwordForm").style.opacity = "0"; // Fading out the form
+                setTimeout(function () {
+                  document.getElementById("passwordInput").blur(); // Removing focus from the input field
+                }, 5000); // Delaying blur for 5 seconds (5000 milliseconds)
+              } else {
+                var randomPlaceholder =
+                  placeholders[Math.floor(Math.random() * placeholders.length)];
+                document.getElementById("passwordInput").value = ""; // Clearing the input field
+                document.getElementById("passwordInput").placeholder =
+                  randomPlaceholder; // Setting a random placeholder text
+              }
+            }
+          });
+      });
+    </script>
+  </body>
+</html>

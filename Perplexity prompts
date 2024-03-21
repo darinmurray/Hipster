@@ -1,0 +1,103 @@
+write an html page with a full sized background image and a password entry form.
+
+remove the form background color, make the background image '/images/background-image.jpg'
+
+do not use placeholder text
+
+remove the input label
+
+make everything font sixe 32 px
+
+limit the input width to 13 characters
+
+hide the 'enter' button
+
+make the password field dots Verdana font family and 0.125em letter spacing
+
+input border radius 15 px, padding: 0px 10px 5px 13px; border: 3px solid whitesmoke;
+
+line-height: 2.15em;
+
+bring focus to the input on pageload
+do not alter the input border on focus
+
+have javascript check the password against "realhipster" and insert a placholeder from an array of the following "nope...", "uh uh", "not even close.", " try again", "loser...", "Soo close!" in the input and clear the contents of the input if it does not match. Go to /imin.html if it does match
+
+if the password is wrong 3 times in a row, clear the input, insert the placeholder "bye bye :-)" and fade out the form over 5 seconds then remove focus from the input.
+
+THings to add?
+
+HINT: "ernest hemmingways pet name for his favorite tea cup"
+
+create ah html page with a full coverage background image of 'https://source.unsplash.com/man-pulling-his-hair-up-while-standing-near-wall-cibBnDQ9hcQ'
+
+center two paragraps of text vertically and horizontally on the page at 80% width, copy: "You know you'r cool...", and "You'r one of us now." in white block 2em letters #5c5c5c.
+
+place this image above the text, centered /images/official_hipster_white_medium.png at 70%vw
+
+/images/Official_Hipster_White_Favicon.png
+
+https://medium.com/@wowmotty/replace-the-input-password-bullet-1cd4ee34e0aa
+
+        input[type="password"]::-ms-reveal,
+        input[type="password"]::-ms-clear {
+            display: none;
+        }
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Entry Form</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-image: url("/images/background-image.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 32px;
+      }
+      .form-container {
+        /* padding: 20px; */
+        /* border-radius: 10px; */
+      }
+      input[type="password"] {
+        width: 12ch;
+        padding: 0px 10px 5px 13px;
+        margin-bottom: 10px;
+        border-radius: 15px;
+        border: 1px solid #ccc;
+        font-size: 32px;
+        font-family: Verdana, sans-serif;
+        letter-spacing: 0.125em;
+        caret-color: #00ff00;
+        line-height: 2.15em;
+      }
+      input[type="password"]::placeholder {
+        color: #999;
+        font-size: 32px;
+      }
+      input[type="password"]::-ms-reveal,
+      input[type="password"]::-ms-clear {
+        display: none;
+      }
+      button {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <form action="#">
+        <input type="password" name="password" id="password" required />
+        <button type="submit" id="submit-btn">Enter</button>
+      </form>
+    </div>
+  </body>
+</html>
